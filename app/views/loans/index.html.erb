@@ -1,0 +1,33 @@
+<%= react_component 'Loans', {loans: @loans } %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Loans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Interest rate</th>
+      <th>Interest month</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loans.each do |loan| %>
+      <tr>
+        <td><%= loan[0].amount %></td>
+        <td><%= loan[0].interest_rate %></td>
+        <td><%= loan[0].interest_month %></td>
+        <td><%= link_to 'Show', loan[0] %></td>
+        <td><%= link_to 'Edit', edit_loan_path(loan[0]) %></td>
+        <td><%= link_to 'Destroy', loan[0], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Loan', new_loan_path %>
